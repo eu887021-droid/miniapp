@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Оплата подписки</title>
+  <script src="https://yookassa.ru/checkout-widget/v1/checkout-widget.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      background: #f9f9f9;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Подписка на AI-курс</h2>
+    <p>Доступ ко всем материалам и обновлениям.</p>
+    <p><b>Стоимость: 990 ₽ / месяц</b></p>
+
+    <button id="pay-btn">Оплатить</button>
+  </div>
+
+  <script>
+    document.getElementById("pay-btn").addEventListener("click", function () {
+      const checkout = new window.YooMoneyCheckoutWidget({
+        confirmation_token: "ВАШ_CONFIRMATION_TOKEN", // <-- заменить токеном из ЮKassa
+        return_url: "https://t.me/ВАШ_БОТ" // куда вернется клиент после оплаты
+      });
+
+      checkout.render("body");
+    });
+  </script>
+</body>
+</html>
